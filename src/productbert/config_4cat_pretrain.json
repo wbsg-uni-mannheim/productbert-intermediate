@@ -1,0 +1,55 @@
+{
+    "name": "BERT-4cat-pretrain",
+    "n_gpu": 3,
+
+    "arch": {
+        "type": "BertModelPoolerLogit",
+        "args": {}
+    },
+    "data_loader": {
+        "type": "BertDataLoader",
+        "args":{
+            "data_dir": "data/",
+            "file": "../../data/processed/wdc-lspc/bert/pre-training_4cat_new_5_bert_cutBTDS_128.pkl.gz",
+            "batch_size": 128,
+            "shuffle": true,
+            "validation_split": 0.0,
+            "num_workers": 8
+        }
+    },
+    "optimizer": {
+        "type": "AdamW",
+        "args":{
+            "lr": 5e-5,
+            "weight_decay": 0.01
+        }
+    },
+    "clip_grad": 1.0,
+    "loss": "BCEWithLogitsLoss",
+    "pos_neg_ratio": 6,
+    "metrics": [
+        "accuracy","tp","fp","tn","fn"
+    ],
+    "lr_scheduler": {
+        "type": "get_linear_schedule_with_warmup",
+        "args": {
+            "num_warmup_steps": 10000,
+            "num_training_steps": -1
+        },
+        "step_every_batch": true
+    },
+    "trainer": {
+        "epochs": 40,
+        "accumulation_steps": 2,
+
+        "save_dir": "saved/",
+        "save_period": 1,
+        "verbosity": 2,
+        
+        "monitor": "max f1",
+        "early_stop": 10,
+
+        "tensorboard": true
+    },
+    "save_hf_config": true
+}

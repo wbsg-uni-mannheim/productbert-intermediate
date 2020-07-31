@@ -1,0 +1,55 @@
+{
+    "name": "BERT-computers-pretrain-mlm",
+    "n_gpu": 4,
+
+    "arch": {
+        "type": "BertModelSupplementaryMLM",
+        "args": {}
+    },
+    "data_loader": {
+        "type": "BertDataLoaderMLM",
+        "args":{
+            "data_dir": "data/",
+            "file": "../../data/processed/wdc-lspc/bert/pre-training_computers_only_new_15_bert_cutBTDS_MLM_512.pkl.gz",
+            "batch_size": 16,
+            "shuffle": true,
+            "validation_split": 0.0,
+            "num_workers": 8
+        }
+    },
+    "optimizer": {
+        "type": "AdamW",
+        "args":{
+            "lr": 5e-5,
+            "weight_decay": 0.01
+        }
+    },
+    "clip_grad": 1.0,
+    "loss": "BCEWithLogitsLoss",
+    "pos_neg_ratio": 6,
+    "metrics": [
+        "accuracy","tp","fp","tn","fn"
+    ],
+    "lr_scheduler": {
+        "type": "get_linear_schedule_with_warmup",
+        "args": {
+            "num_warmup_steps": 10000,
+            "num_training_steps": -1
+        },
+        "step_every_batch": true
+    },
+    "trainer": {
+        "epochs": 40,
+        "accumulation_steps": 16,
+
+        "save_dir": "saved/",
+        "save_period": 1,
+        "verbosity": 2,
+        
+        "monitor": "min loss",
+        "early_stop": 10,
+
+        "tensorboard": true
+    },
+    "save_hf_config": true
+}

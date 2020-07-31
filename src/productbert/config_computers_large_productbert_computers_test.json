@@ -1,0 +1,26 @@
+{
+    "name": "BERT-FT-SUP-C-computers-large-test",
+    "n_gpu": 1,
+
+    "arch": {
+        "type": "BertModelSupplementaryPoolerComputers",
+        "args": {}
+    },
+    "data_loader": {
+        "type": "BertDataLoader",
+        "args":{
+            "data_dir": "data/",
+            "file": "../../data/processed/wdc-lspc/bert/preprocessed_computers_gs_bert_cutBTDS_512.pkl.gz",
+            "batch_size": 128,
+            "shuffle": false,
+            "validation_split": 0.0,
+            "num_workers": 8
+        }
+    },
+    "loss": "BCEWithLogitsLoss",
+    "pos_neg_ratio": 3,
+    "metrics": [
+        "accuracy","tp","fp","tn","fn"
+    ],
+    "save_predictions": true
+}
