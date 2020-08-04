@@ -1,7 +1,7 @@
 from torchvision import datasets, transforms
 from base import BaseDataLoader
 
-from dataset.datasets import BertDataset, BertDatasetJoint, BertDatasetMLM
+from dataset.datasets import BertDataset, BertDatasetMLM
 import pandas as pd
 
 
@@ -26,21 +26,6 @@ class BertDataLoader(BaseDataLoader):
         
         self.data_dir = data_dir
         self.dataset = BertDataset(file)
-        self.valid_batch_size = valid_batch_size
-        if validation_split == -1:
-            self.valid_ids = pd.read_csv(valid_file)
-        super().__init__(self.dataset, batch_size, shuffle, validation_split, num_workers)
-
-
-class BertDataLoaderJoint(BaseDataLoader):
-    """
-    DataLoader for BERT encoded sequences
-    """
-
-    def __init__(self, data_dir, batch_size, file, valid_file=None, valid_batch_size=None, shuffle=True,
-                 validation_split=-1, num_workers=1):
-        self.data_dir = data_dir
-        self.dataset = BertDatasetJoint(file)
         self.valid_batch_size = valid_batch_size
         if validation_split == -1:
             self.valid_ids = pd.read_csv(valid_file)

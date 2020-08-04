@@ -50,29 +50,4 @@ class BertDatasetMLM(Dataset):
         data = pd.read_pickle(filename, compression='gzip')
         data = data[['pair_id', 'input_ids', 'token_type_ids', 'attention_mask', 'label', 'mlm_labels']]
         return data
-
-class BertDatasetJoint(Dataset):
-
-    def __init__(self, filename):
-
-        # Store the contents of the file in a pandas dataframe
-        self.data = self._convert_to_tensor(filename)
-
-    def __len__(self):
-        return len(self.data)
-
-    def __getitem__(self, index):
-        record = self.data.loc[index]
-        input_id = record['input_ids']
-        token_id = record['token_type_ids']
-        attn_mask = record['attention_mask']
-        label = record['label']
-        label_multi1 = record['label_multi1']
-        label_multi2 = record['label_multi2']
-
-        return input_id, token_id, attn_mask, label, label_multi1, label_multi2
-
-    def _convert_to_tensor(self, filename):
-        data = pd.read_pickle(filename, compression='gzip')
-        data = data[['pair_id', 'input_ids', 'token_type_ids', 'attention_mask', 'label', 'label_multi1', 'label_multi2']]
-        return data
+        

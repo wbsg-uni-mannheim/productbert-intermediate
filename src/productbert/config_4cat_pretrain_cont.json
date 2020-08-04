@@ -1,6 +1,6 @@
 {
     "name": "BERT-4cat-pretrain",
-    "n_gpu": 3,
+    "n_gpu": 4,
 
     "arch": {
         "type": "BertModelPoolerLogit",

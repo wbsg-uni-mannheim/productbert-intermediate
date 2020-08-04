@@ -17,7 +17,9 @@ from transformers import BertTokenizer
 
 from sklearn.preprocessing import LabelEncoder
 
+# process data required for fine-tuning
 BUILD_LSPC = True
+# process intermediate training sets if you want to replicate intermediate training
 BUILD_PRETRAIN_COMPUTERS_AND_4CAT = False
 BUILD_PRETRAIN_COMPUTERS_AND_4CAT_MASKED = False
 

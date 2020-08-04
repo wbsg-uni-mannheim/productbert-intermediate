@@ -24,7 +24,7 @@ for file in glob.glob('../../../data/processed/wdc-lspc/magellan/learning-curve/
         epochs = 50
         pos_neg_ratio = 3
         batch_size = 16
-        lr = 0.008
+        lr = 0.005
         lr_decay = 0.8
         embedding = 'fasttext.en.bin'
         nn_type = 'rnn'

@@ -8,7 +8,8 @@ import os
 from src.data import utils
 
 PREPROCESS = True
-DEDUP = True
+# only needed to replicate construction of the intermediate training sets, which are provided in the download file
+DEDUP = False
 
 if __name__ == '__main__':
 
