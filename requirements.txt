@@ -34,7 +34,7 @@ cloudpickle==1.4.1
 clyent==1.2.2
 colorama==0.4.3
 contextlib2==0.6.0.post1
-cryptography==2.9.2
+cryptography==3.2
 cycler==0.10.0
 Cython==0.29.20
 cytoolz==0.10.1
