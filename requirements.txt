@@ -105,7 +105,7 @@ lazy-object-proxy==1.5.0
 libarchive-c==2.9
 llvmlite==0.32.1
 locket==0.2.0
-lxml==4.5.1
+lxml==4.6.3
 Markdown==3.2.2
 MarkupSafe==1.1.1
 matplotlib @ file:///tmp/build/80754af9/matplotlib-base_1592846017414/work
