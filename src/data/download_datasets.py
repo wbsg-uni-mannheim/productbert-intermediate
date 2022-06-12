@@ -1,6 +1,7 @@
 import requests
 from zipfile import ZipFile
 from pathlib import Path
+from tqdm import tqdm
 
 DATASETS = [
     'http://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2/repo-download/repo-data.zip'
